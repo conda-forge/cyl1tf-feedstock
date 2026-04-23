@@ -14,11 +14,12 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . -vv
-  number: 2
+  number: 3
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - cython
     - numpy
@@ -31,7 +32,6 @@ requirements:
     - openlibm  # [unix]
   run:
     - python
-    - {{ pin_compatible('numpy') }}
 test:
   imports:
     - cyl1tf
